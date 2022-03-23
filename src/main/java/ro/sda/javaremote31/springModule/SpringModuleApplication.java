@@ -1,4 +1,4 @@
-package ro.sda.javaremote31.SpringModule;
+package ro.sda.javaremote31.springModule;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
