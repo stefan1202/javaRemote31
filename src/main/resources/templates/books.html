@@ -3,32 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Books</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
 <body>
 <p>Hello from books</p>
 <!--/*@thymesVar id="books" type="123"*/-->
 <!--<p th:text="${books}"></p>-->
-<table>
-    <thead>
-        <th>Author</th>
-        <th>Title</th>
-        <th>Type</th>
-        <th>PagesNumber</th>
-        <th>Actions</th>
-    </thead>
-    <tbody>
-    <tr th:each="book : ${books}">
-        <td th:text="${book.author}"></td>
-        <td th:text="${book.title}"></td>
-        <td th:text="${book.type}"></td>
-        <td th:text="${book.pagesNumber}"></td>
-        <td> <a th:href="@{/books/edit/{bookId}(bookId=${book.id})}">Edit</a>
-            <a th:href="@{/books/delete/{bookId}(bookId=${book.id})}">Delete</a>
-        </td>
 
-<!--       <td th:text="${book.type}? #{true} : #{false}">yes</td>-->
-    </tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-6">
+        <table>
+            <thead>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>PagesNumber</th>
+            <th>Actions</th>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.type}"></td>
+                <td th:text="${book.pagesNumber}"></td>
+                <td><a th:href="@{/books/edit/{bookId}(bookId=${book.id})}" class="btn btn-primary"><i
+                        class="fas fa-user-edit m-lg-2"></i></a>
+                    <a th:href="@{/books/delete/{bookId}(bookId=${book.id})}" class="btn btn-primary"><i
+                            class="fas fa-user-times m-lg-2"></i></a>
+                </td>
+
+                <!--       <td th:text="${book.type}? #{true} : #{false}">yes</td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
