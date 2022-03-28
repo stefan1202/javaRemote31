@@ -22,7 +22,9 @@
         <td th:text="${book.title}"></td>
         <td th:text="${book.type}"></td>
         <td th:text="${book.pagesNumber}"></td>
-        <td> <a th:href="@{/books/{bookId}(bookId=${book.id})}">Edit</a></td>
+        <td> <a th:href="@{/books/edit/{bookId}(bookId=${book.id})}">Edit</a>
+            <a th:href="@{/books/delete/{bookId}(bookId=${book.id})}">Delete</a>
+        </td>
 
 <!--       <td th:text="${book.type}? #{true} : #{false}">yes</td>-->
     </tr>

@@ -39,10 +39,15 @@ public class BookController {
         bookService.createBook(form);
         return "redirect:/books";
     }
-    @GetMapping("/books/{bookId}")
+    @GetMapping("/books/edit/{bookId}")
     public String showEditForm(@PathVariable("bookId") int id, Model model) {//Model e modelul din Spring MVC
         BookForm bookForm = bookService.findById(id);
         model.addAttribute("bookForm", bookForm);
         return "book_create";
+    }
+    @GetMapping("/books/delete/{bookId}")
+    public String deleteBook(@PathVariable("bookId") int id, Model model) {//Model e modelul din Spring MVC
+       bookService.deleteById(id);
+        return "redirect:/books";
     }
 }
