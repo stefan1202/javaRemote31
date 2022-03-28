@@ -7,6 +7,26 @@
 <body>
 <p>Hello from books</p>
 <!--/*@thymesVar id="books" type="123"*/-->
-<p th:text="${books}"></p>
+<!--<p th:text="${books}"></p>-->
+<table>
+    <thead>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>PagesNumber</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.type}"></td>
+        <td th:text="${book.pagesNumber}"></td>
+        <td> <a th:href="@{/books/{bookId}(bookId=${book.id})}">Edit</a></td>
+
+<!--       <td th:text="${book.type}? #{true} : #{false}">yes</td>-->
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

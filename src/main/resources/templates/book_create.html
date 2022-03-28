@@ -6,20 +6,26 @@
 </head>
 <body>
 <form method="post" th:action="@{/books/create}" th:object="${bookForm}">
-    <label for="author">Author name:</label>
-    <input id="author" type="text" th:field="*{author}">
-
-    <label for="title">Title:</label>
-    <input id="title" type="text" th:field="*{title}">
-
-    <label for="type">Type:</label>
-    <input id="type" type="text" th:field="*{type}">
-
-    <label for="pagesNumber">Number of pages:</label>
-    <input id="pagesNumber" type="number" th:field="*{pagesNumber}">
-
-    <button type="submit">Submit</button>
-
+    <div>
+        <input id="id" type="number" hidden th:field="*{id}">
+        <label for="author">Author name:</label>
+        <input id="author" type="text" th:field="*{author}">
+    </div>
+    <div>
+        <label for="title">Title:</label>
+        <input id="title" type="text" th:field="*{title}">
+    </div>
+    <div>
+        <label for="type">Type:</label>
+        <input id="type" type="text" th:field="*{type}">
+    </div>
+    <div>
+        <label for="pagesNumber">Number of pages:</label>
+        <input id="pagesNumber" type="number" th:field="*{pagesNumber}">
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
 
 </form>
 </body>
