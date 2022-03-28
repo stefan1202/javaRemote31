@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Books</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<form method ="post" th:action="@{/books/create}" th:object="${bookForm}">
-<label for="author">Author name:</label>
+<form method="post" th:action="@{/books/create}" th:object="${bookForm}">
+    <label for="author">Author name:</label>
     <input id="author" type="text" th:field="*{author}">
 
     <label for="title">Title:</label>

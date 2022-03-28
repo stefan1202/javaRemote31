@@ -10,17 +10,18 @@ import ro.sda.javaremote31.springModule.repository.BookRepository;
 import java.util.List;
 
 @Service
-public class BookService  {
+public class BookService {
 
     @Autowired
     private BookRepository bookRepository;
 
     public List<Book> getAllBooks() {
+
         return bookRepository.findAll();
     }
 
     public void createBook(BookForm form) {
-        Book book =new Book();
+        Book book = new Book();
         book.setAuthor(form.getAuthor());
         book.setTitle(form.getTitle());
         book.setPagesNumber(form.getPagesNumber());
