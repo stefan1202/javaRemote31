@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Slf4j
 @NoArgsConstructor
@@ -19,11 +20,11 @@ public class BookForm {
 
     private Integer id;
     @NotNull
-    @Min(3)
+    @Size(min=3)
     private String author;
 
     @NotNull
-    @Min(5)
+    @Size(min=5)
     private String title;
 
     @NotNull
