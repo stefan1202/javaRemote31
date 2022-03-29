@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Books</title>
@@ -8,36 +9,44 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
 <body>
-<p>Hello from books</p>
-<!--/*@thymesVar id="books" type="123"*/-->
-<!--<p th:text="${books}"></p>-->
+<div class="container my-5">
+    <h2 class="mb-5">Books</h2>
+    <div class="row">
+        <div class="col-xl-6">
+            <a th:href="@{/books/create}" class="btn btn-primary"><i
+                    class="fas fa-user-plus m-lg-2"></i> Add new book</a>
+            <a th:href="@{/logout}" class="btn btn-primary " sec:authorize="isAuthenticated()"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            <a th:href="@{/login}" class="btn btn-primary " sec:authorize="isAnonymous()"><i class="fas fa-key"></i> Login </a>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <table>
-            <thead>
-            <th>Author</th>
-            <th>Title</th>
-            <th>Type</th>
-            <th>PagesNumber</th>
-            <th>Actions</th>
-            </thead>
-            <tbody>
-            <tr th:each="book : ${books}">
-                <td th:text="${book.author}"></td>
-                <td th:text="${book.title}"></td>
-                <td th:text="${book.type}"></td>
-                <td th:text="${book.pagesNumber}"></td>
-                <td><a th:href="@{/books/edit/{bookId}(bookId=${book.id})}" class="btn btn-primary"><i
-                        class="fas fa-user-edit m-lg-2"></i></a>
-                    <a th:href="@{/books/delete/{bookId}(bookId=${book.id})}" class="btn btn-primary"><i
-                            class="fas fa-user-times m-lg-2"></i></a>
-                </td>
+    <div class="row">
+        <div class="col-lg-6">
+            <table>
+                <thead>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>PagesNumber</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.type}"></td>
+                    <td th:text="${book.pagesNumber}"></td>
+                    <td><a  th:href="@{/books/edit/{bookId}(bookId=${book.id})}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')"><i
+                            class="fas fa-user-edit m-lg-2"></i></a>
+                        <a th:href="@{/books/delete/{bookId}(bookId=${book.id})}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')"><i
+                                class="fas fa-user-times m-lg-2"></i></a>
+                    </td>
 
-                <!--       <td th:text="${book.type}? #{true} : #{false}">yes</td>-->
-            </tr>
-            </tbody>
-        </table>
+                    <!--       <td th:text="${book.type}? #{true} : #{false}">yes</td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 </body>
