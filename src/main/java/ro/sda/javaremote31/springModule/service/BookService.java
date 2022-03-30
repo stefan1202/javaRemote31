@@ -31,13 +31,12 @@ public class BookService {
     }
 
     public BookForm findById(int id) {
-       Book entityBook= bookRepository.findById(id).orElseThrow(()->new EntityNotFoundError(String.format("Book with %s does not exist",id)));
-       BookForm bookForm = bookMapper.convertToDto(entityBook);
-       return bookForm;
+        Book entityBook = bookRepository.findById(id).orElseThrow(() -> new EntityNotFoundError(String.format("Book with %s does not exist", id)));
+        return bookMapper.convertToDto(entityBook);
     }
 
     public void deleteById(int id) {
-        Book entityBook= bookRepository.findById(id).orElseThrow(()->new EntityNotFoundError(String.format("Book with %s does not exist",id)));
+        bookRepository.findById(id).orElseThrow(() -> new EntityNotFoundError(String.format("Book with %s does not exist", id)));
         bookRepository.deleteById(id);
     }
 }

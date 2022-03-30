@@ -11,6 +11,7 @@ public class BookMapper implements Mapper<Book, BookForm> {
 
     @Autowired
     private BookRepository bookRepository;
+
     @Override
     public BookForm convertToDto(Book entity) {
         BookForm bookForm = new BookForm();
@@ -25,9 +26,9 @@ public class BookMapper implements Mapper<Book, BookForm> {
     @Override
     public Book convertToEntity(BookForm dto) {
         Book book;
-        if (dto.getId() !=null) {
+        if (dto.getId() != null) {
             book = bookRepository.findById(dto.getId()).orElse(new Book());
-        }else {
+        } else {
             book = new Book();
         }
         book.setId(dto.getId());

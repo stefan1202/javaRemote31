@@ -10,13 +10,15 @@
 </head>
 <body>
 <div class="container my-5">
-    <h2 class="mb-5">Books</h2>
+    <h2 class="mb-5">Authors</h2>
     <div class="row">
         <div class="col-xl-6">
-            <a th:href="@{/author/create}" class="btn btn-primary"><i
-                    class="fas fa-user-plus m-lg-2"></i> Add new book</a>
-            <a th:href="@{/logout}" class="btn btn-primary " sec:authorize="isAuthenticated()"><i class="fas fa-sign-out-alt"></i> Logout </a>
-            <a th:href="@{/login}" class="btn btn-primary " sec:authorize="isAnonymous()"><i class="fas fa-key"></i> Login </a>
+            <a th:href="@{/authors/create}" class="btn btn-primary"><i
+                    class="fas fa-user-plus"></i> Add new author</a>
+            <a th:href="@{/logout}" class="btn btn-primary " sec:authorize="isAuthenticated()"><i
+                    class="fas fa-sign-out-alt"></i> Logout </a>
+            <a th:href="@{/login}" class="btn btn-primary " sec:authorize="isAnonymous()"><i class="fas fa-key"></i>
+                Login </a>
         </div>
     </div>
 
@@ -24,21 +26,24 @@
         <div class="col-lg-6">
             <table>
                 <thead>
-                <th>Author</th>
-                <th>Title</th>
-                <th>Type</th>
-                <th>PagesNumber</th>
-                <th>Actions</th>
+                <tr>
+                    <th>Name</th>
+                    <th>Last name</th>
+                    <th>Nationality</th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr th:each="author : ${authors}">
                     <td th:text="${author.name}"></td>
                     <td th:text="${author.lastName}"></td>
                     <td th:text="${author.nationality}"></td>
-                    <td><a  th:href="@{/authors/edit/{authorId}(authorId=${author.id})}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')"><i
-                            class="fas fa-user-edit m-lg-2"></i></a>
-                        <a th:href="@{/authors/delete/{authorId}(authorId=${author.id})}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')"><i
-                                class="fas fa-user-times m-lg-2"></i></a>
+                    <td><a th:href="@{/authors/edit/{authorId}(authorId=${author.id})}" class="btn btn-primary btn-sm"
+                           sec:authorize="hasRole('ADMIN')"><i
+                            class="fas fa-user-edit m-sm-2"></i></a>
+                        <a th:href="@{/authors/delete/{authorId}(authorId=${author.id})}" class="btn btn-primary  btn-sm"
+                           sec:authorize="hasRole('ADMIN')"><i
+                                class="fas fa-user-times m-sm-2"></i></a>
                     </td>
 
                     <!--       <td th:text="${book.type}? #{true} : #{false}">yes</td>-->

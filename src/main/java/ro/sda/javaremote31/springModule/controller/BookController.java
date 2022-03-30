@@ -39,6 +39,7 @@ public class BookController {
         bookService.createBook(form);
         return "redirect:/books";
     }
+
     @GetMapping("/books/edit/{bookId}")
     public String showEditForm(@PathVariable("bookId") int id, Model model) {//Model e modelul din Spring MVC
         BookForm bookForm = bookService.findById(id);
