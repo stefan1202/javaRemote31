@@ -20,11 +20,10 @@ public class BookForm {
 
     private Integer id;
     @NotNull
-    @Size(min=3)
-    private String author;
+    private Long author;
 
     @NotNull
-    @Size(min=5)
+    @Size(min = 5)
     private String title;
 
     @NotNull

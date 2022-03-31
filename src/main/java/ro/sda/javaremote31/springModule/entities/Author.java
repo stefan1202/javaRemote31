@@ -1,15 +1,17 @@
 package ro.sda.javaremote31.springModule.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @OneToMany(mappedBy = "author")
+    private Set<Book> book;
     private String name;
     private String lastName;
     private String nationality;
@@ -47,5 +49,10 @@ public class Author {
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
+    }
+
+    @Override
+    public String toString() {
+        return  name + " " + lastName;
     }
 }

@@ -16,7 +16,14 @@
                 <div class="form-group col-md-6">
                     <input id="id" type="number" hidden th:field="*{id}">
                     <label for="author" class="col-form-label">Author name:</label>
-                    <input id="author" type="text" th:field="*{author}" class="form-control">
+<!--                    <input id="author" type="text" th:field="*{author}" class="form-control">-->
+                    <select id="author" type="text" th:field="*{author}" class="form-control">
+                        <option th:each="aut: ${authors}"
+                                th:value="${aut.id}"
+                                th:text="${aut}">
+
+                        </option>
+                    </select>
                     <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-6">
